@@ -28,6 +28,7 @@ wait_active() {
   local id="$1"
   local name="$2"
   local state=""
+  echo "waiting for workflow ${name} (${id})..."
   for _ in $(seq 1 150); do
     state=$(api "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/workflows/${id}" \
       | tr -d '\n' \
@@ -44,17 +45,19 @@ wait_active() {
 
 echo "repo=${GITHUB_REPOSITORY} codespace=${CODESPACE_NAME:-unset}"
 
-# Let the tmux/inotify monitor from post-start.sh come up.
+# Let the tmux/inotify monitor from post-create.sh come up.
 sleep 12
 
 # Step 1: change the global Git config. The course monitor observes it and
 # dispatches git-config-changed with config_type=global.
+echo "step 1: writing global Git config"
 git config --global user.name "SFS Labs"
 git config --global user.email "sfs-labs@users.noreply.github.com"
 git config --global --list
 wait_active 429302938 "Step 2" || exit 1
 
 # Step 2: initialize the sample project and make the three required commits.
+echo "step 2: initializing project and creating three commits"
 cd /workspaces/stack-overflown || exit 1
 git init -b main
 git config user.name "SFS Labs"
@@ -84,6 +87,7 @@ git commit -m "Start developer docs"
 wait_active 429302949 "Step 3" || exit 1
 
 # Step 3: inspect history, visit the first commit, then return to main.
+echo "step 3: exploring history"
 INITIAL_COMMIT=$(git rev-list --max-parents=0 HEAD)
 git log --oneline
 git checkout "$INITIAL_COMMIT"
@@ -91,6 +95,7 @@ git checkout main
 wait_active 429302959 "Step 4" || exit 1
 
 # Step 4: two real source changes with the required commit messages.
+echo "step 4: changing source files"
 python3 - <<'PY'
 from pathlib import Path
 import re
@@ -152,6 +157,7 @@ git commit -m "Make null pointer pattern easier to complete"
 wait_active 429302969 "Step 5" || exit 1
 
 # Step 5: first branch with three commits and a real merge commit.
+echo "step 5: branching and merging"
 git branch fix-incomplete-high-score
 git checkout fix-incomplete-high-score
 
