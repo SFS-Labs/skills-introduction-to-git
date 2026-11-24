@@ -1,0 +1,129 @@
+=== diagnostic 20261124T193131Z ===
+repo=SFS-Labs/skills-introduction-to-git codespace=intro-git-course-run-7-vx6gg9g75w5cppvq token=set
+tools curl=/usr/bin/curl jq=/usr/bin/jq tmux=/usr/bin/tmux inotifywait=/usr/bin/inotifywait python3=/usr/bin/python3
+hooksPath=/home/vscode/.vscode-remote/data/Machine/exercise-monitor/.githooks
+upload 20261124T193131Z-start: HTTP 201
+=== course-run 2026-11-24T19:31:33Z ===
+repo=SFS-Labs/skills-introduction-to-git codespace=intro-git-course-run-7-vx6gg9g75w5cppvq
+step 1: writing global Git config
+pager.log=false
+core.pager=less -F
+core.hookspath=/home/vscode/.vscode-remote/data/Machine/exercise-monitor/.githooks
+user.name=SFS Labs
+user.email=sfs-labs@users.noreply.github.com
+waiting for workflow Step 2 (429302938)...
+workflow Step 2 (429302938) active
+step 2: initializing project and creating three commits
+Initialized empty Git repository in /workspaces/stack-overflow/.git/
+Git Hook: Post Commit
+[main (root-commit) 20f0864] Initial commit
+ 4 files changed, 657 insertions(+)
+ create mode 100644 src/index.html
+ create mode 100644 src/index.js
+ create mode 100644 src/patterns.js
+ create mode 100644 src/style.css
+Git Hook: Post Commit
+[main 4da3b75] Start game documentation
+ 1 file changed, 3 insertions(+)
+ create mode 100644 README.md
+Git Hook: Post Commit
+[main 6ad3d4f] Start developer docs
+ 1 file changed, 7 insertions(+)
+waiting for workflow Step 3 (429302949)...
+workflow Step 3 (429302949) active
+step 3: exploring history
+6ad3d4f Start developer docs
+4da3b75 Start game documentation
+20f0864 Initial commit
+Note: switching to '20f086452791417463fddf5b76e97c645c240131'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 20f0864 Initial commit
+Git Hook: Post Checkout
+Previous HEAD position was 20f0864 Initial commit
+Switched to branch 'main'
+Git Hook: Post Checkout
+waiting for workflow Step 4 (429302959)...
+workflow Step 4 (429302959) active
+step 4: changing source files
+Git Hook: Post Commit
+[main 9fe3fcb] Add element for showing high score
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+Git Hook: Post Commit
+[main 235ef99] Make null pointer pattern easier to complete
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+waiting for workflow Step 5 (429302969)...
+workflow Step 5 (429302969) active
+step 5: branching and merging
+Switched to branch 'fix-incomplete-high-score'
+Git Hook: Post Checkout
+Git Hook: Post Commit
+[fix-incomplete-high-score cce7c57] Add new variable for tracking high score
+ 1 file changed, 1 insertion(+)
+Git Hook: Post Commit
+[fix-incomplete-high-score 138c2eb] Add loading of stored high score
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+Git Hook: Post Commit
+[fix-incomplete-high-score 78bb97c] Add logic to keep track of highest score
+ 1 file changed, 7 insertions(+)
+Switched to branch 'main'
+Git Hook: Post Checkout
+Merge made by the 'ort' strategy.
+ src/index.js | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+Git Hook: Post Merge
+Deleted branch fix-incomplete-high-score (was 78bb97c).
+Switched to a new branch 'add-level-counter'
+Git Hook: Post Checkout
+Git Hook: Post Commit
+[add-level-counter 9d6ee76] Add element to display current level
+ 1 file changed, 2 insertions(+)
+Git Hook: Post Commit
+[add-level-counter c52f05b] Add variables for level and clear counter
+ 1 file changed, 2 insertions(+)
+Git Hook: Post Commit
+[add-level-counter 9d6456b] Add logic to calculate level
+ 1 file changed, 6 insertions(+)
+Switched to branch 'main'
+Git Hook: Post Checkout
+Merge made by the 'ort' strategy.
+ src/index.html | 2 ++
+ src/index.js   | 8 ++++++++
+ 2 files changed, 10 insertions(+)
+Git Hook: Post Merge
+Deleted branch add-level-counter (was 9d6456b).
+*   5231b95 Add level counter
+|\  
+| * 9d6456b Add logic to calculate level
+| * c52f05b Add variables for level and clear counter
+| * 9d6ee76 Add element to display current level
+|/  
+*   a1a11c3 Fix high score tracker
+|\  
+| * 78bb97c Add logic to keep track of highest score
+| * 138c2eb Add loading of stored high score
+| * cce7c57 Add new variable for tracking high score
+|/  
+* 235ef99 Make null pointer pattern easier to complete
+* 9fe3fcb Add element for showing high score
+* 6ad3d4f Start developer docs
+* 4da3b75 Start game documentation
+* 20f0864 Initial commit
+waiting for workflow Step 6 (429302979)...
+workflow Step 6 (429302979) active
+=== course-run complete 2026-11-24T19:34:30Z ===
+course-run exit status: 0
