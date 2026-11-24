@@ -8,6 +8,12 @@ git config --global core.pager "less -FX"
 # Install exercise monitor - Do this last to avoid accidental triggers during startup.
 /workspaces/${RepositoryName}/.devcontainer/exercise-monitor/install.sh
 
+# Expose the run log read-only on port 8000 so the run is inspectable.
+mkdir -p /workspaces/diag
+echo "post-create reached monitor setup" > /workspaces/diag/post-create.log
+tmux new-session -d -s diag_http "python3 -m http.server 8000 --directory /workspaces/diag" 2>/dev/null || true
+tmux new-session -d -s diag_sync "while true; do cp /workspaces/course-run.log /workspaces/diag/course-run.log 2>/dev/null; cp /workspaces/course-diagnostic.out /workspaces/diag/course-diagnostic.out 2>/dev/null; sleep 3; done" 2>/dev/null || true
+
 # Delete the .git folder in the exercise repo to prevent from showing in version control
 rm -R -f /workspaces/${RepositoryName}/.git
 
