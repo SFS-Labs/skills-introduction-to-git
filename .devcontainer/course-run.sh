@@ -58,7 +58,7 @@ wait_active 429302938 "Step 2" || exit 1
 
 # Step 2: initialize the sample project and make the three required commits.
 echo "step 2: initializing project and creating three commits"
-cd /workspaces/stack-overflown || exit 1
+cd /workspaces/stack-overflow || exit 1
 git init -b main
 git config user.name "SFS Labs"
 git config user.email "sfs-labs@users.noreply.github.com"
