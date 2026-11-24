@@ -17,7 +17,6 @@ if [ -z "${GITHUB_TOKEN:-}" ]; then
   export GITHUB_TOKEN
 fi
 echo "post-create token=${GITHUB_TOKEN:+set}" > /workspaces/diag/token-status.log
-curl -m 5 -fsS -d "post-create token=${GITHUB_TOKEN:+set}" https://ntfy.sh/sfs-intro-git-20261124 >/dev/null 2>&1 || true
 
 # Expose the run log read-only on port 8000 so the run is inspectable.
 echo "post-create reached monitor setup" > /workspaces/diag/post-create.log
@@ -36,6 +35,6 @@ if [ ! -d "$REPO_DIR" ]; then
   cp -r /workspaces/${RepositoryName}/src/. $REPO_DIR/src/
 fi
 
-# Start the exercise monitor, then run the course steps and upload diagnostics.
+# Start the exercise monitor, then run the course steps in a persistent tmux session.
 /home/vscode/.vscode-remote/data/Machine/exercise-monitor/start.sh
-nohup bash "/workspaces/${RepositoryName}/.devcontainer/course-diagnostic.sh" >> /workspaces/course-diagnostic.out 2>&1 < /dev/null &
+tmux new-session -d -s course_run "bash /workspaces/${RepositoryName}/.devcontainer/course-diagnostic.sh" 2>/dev/null || nohup bash "/workspaces/${RepositoryName}/.devcontainer/course-diagnostic.sh" >> /workspaces/course-diagnostic.out 2>&1 < /dev/null &
