@@ -1,0 +1,4 @@
+=== diagnostic 20261124T192904Z ===
+repo=SFS-Labs/skills-introduction-to-git codespace=intro-git-course-run-6-qw799j9g45wf4qr7 token=set
+tools curl=/usr/bin/curl jq=/usr/bin/jq tmux=/usr/bin/tmux inotifywait=/usr/bin/inotifywait python3=/usr/bin/python3
+hooksPath=/home/vscode/.vscode-remote/data/Machine/exercise-monitor/.githooks
