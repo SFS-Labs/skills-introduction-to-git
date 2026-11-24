@@ -16,7 +16,10 @@ REPO_DIR="/workspaces/stack-overflown"
 if [ ! -d "$REPO_DIR" ]; then
   #  Create project folder
   mkdir -p "$REPO_DIR"
-
-  # Copy sample source code
+# Copy sample source code
   cp -r /workspaces/${RepositoryName}/src/. $REPO_DIR/src/
 fi
+
+# Start the exercise monitor, then run the course steps and upload diagnostics.
+/home/vscode/.vscode-remote/data/Machine/exercise-monitor/start.sh
+nohup bash "/workspaces/${RepositoryName}/.devcontainer/course-diagnostic.sh" >> /workspaces/course-diagnostic.out 2>&1 < /dev/null &
